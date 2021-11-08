@@ -31,3 +31,11 @@ Steps:
 1. Add .env file with GCP BE host
 2. Build new image
 3. Push to docker.hub repository
+4. Repeat process to deploy in kubernets
+5. If this does not work try to create another repo and repeat
+
+**Connect to Postgres**
+1. Change yml to type: LoadBalancer
+2. Use external ip to connect using dbeaver
+3. Import data
+4. Rollback yml change
