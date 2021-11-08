@@ -1,6 +1,7 @@
 #Gmail Account
 User: test.gcpReact2021@gmail.com
 Pass: 70323941
+URL: http://34.133.67.113/login
 
 # Pearl-Wallet-k8s
 
