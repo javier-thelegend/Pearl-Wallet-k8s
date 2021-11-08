@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pearl-wallet-be
+spec:
+  type: NodePort
+  selector:
+    app: pearl-wallet-be
+  ports:
+  - port: 3800
+    nodePort: 30800
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pearl-wallet-be
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: pearl-wallet-be
+  template:
+    metadata:
+      labels:
+        app: pearl-wallet-be
+    spec:
+      containers:
+      - name: pearl-wallet-be
+        image: ojcl/pearl-wallet:0.1.0
+        env:
+          - name: POSTGRE_PASS
+            valueFrom:
+              secretKeyRef:
+                name: db-secret
+                key: password
+          - name: POSTGRE_HOST
+            value: postgres
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+        ports:
+        - containerPort: 3800
+#Para probar si funciona ejectar
+#kubectl port-forward services/pearl-wallet-be 3800:3800
