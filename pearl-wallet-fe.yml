@@ -8,7 +8,7 @@ spec:
     app: pearl-wallet-fe
   ports:
   - port: 80
-    nodePort: 30080
+    nodePort: 
 ---
 apiVersion: apps/v1
 kind: Deployment
